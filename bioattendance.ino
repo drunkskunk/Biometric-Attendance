@@ -10,11 +10,11 @@ extern "C" {
 // SSID to connect to
 uint8_t id;
 HTTPClient http;
-static const char* ssid = "Amrita";
+static const char* ssid = "Wi-Fi Name";
 // Username for authentification
-static const char* username = "h4cse15001";
+static const char* username = "my_username";
 // Password for authentication
-static const char* password = "nelloregaaru";
+static const char* password = "my_password";
 SoftwareSerial mySerial(D5, D6);
 
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
@@ -73,7 +73,7 @@ int fingerprintID = getFingerprintID();
   Serial.println(fingerprintID);
     char myid[5];
     itoa((int)fingerprintID, myid, 10);
-    http.begin("http://jrmtech.in/adder.php?bid="+myString);
+    http.begin("http://localhost/adder.php?bid="+myString);
     int statusCode = http.GET();
     Serial.println(http.getString());
     http.end();
